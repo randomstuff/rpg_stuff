@@ -1,0 +1,9 @@
+# Rule for province map
+# Configuration for a rule for the standard D&D5e tactical map scale (1in for 10ft) in meters.
+template: rule.svg.j2
+title: Province (1in for 1mile)
+height: 1.5
+steps: 42
+# 1 inch for 1 mile, i.e. 2.54 cm for 1.60934 km gives: 0.64 for 1 km
+step_width: 0.64
+unit: ""

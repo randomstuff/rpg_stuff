@@ -1,0 +1,8 @@
+# Rule for tactical map
+# Configuration for a rule for the standard D&D5e tactical map scale (1in for 10ft) in meters.
+template: rule.svg.j2
+title: Tactical (1in for 10ft)
+height: 1.5
+width: 27
+step_width: 1.6666666666666665
+unit: m

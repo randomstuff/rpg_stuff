@@ -1,0 +1,32 @@
+{%- if steps is not defined %}{% set steps = (width / step_width) | round(method='floor')|int %}{% endif -%}
+<svg xmlns="http://www.w3.org/2000/svg" width="{{steps * step_width}}cm" height="{{height}}cm">
+    <rect x="0cm" y="0cm" width="{{steps * step_width}}cm" height="{{height}}cm"
+          style="stroke: black; stroke-width: 1; fill: none;"/>
+
+    <text x="0.5cm" y="{{0.95 * height}}cm" font-size="12" >{{title}}</text>
+
+    {#- Main ticks -#}
+    {%- for i in range(1, steps) %}
+    <line x1="{{i * step_width}}cm" y1="0.0cm" x2="{{i * step_width}}cm" y2="{{height / 2}}cm" style="stroke: black; stroke-width: 1;"/>
+    {%- endfor -%}
+
+    {#- Tick labels -#}
+    {%- for i in range(1, steps + 1) %}
+    <text x="{{i * step_width}}cm" y="{{0.75 * height}}cm" font-size="12" text-anchor="end">{{i}}{{unit}}</text>
+    {%- endfor -%}
+
+    {#- Half ticks -#}
+    {%- for i in range(1, 2 * steps) -%}
+    {%- if i % 2 != 0 %}
+    <line x1="{{i * step_width / 2}}cm" y1="0.0cm" x2="{{i * step_width / 2}}cm" y2="{{height / 4}}cm" style="stroke: black; stroke-width: 1;"/>
+    {%- endif -%}
+    {%- endfor -%}
+
+    {#- Tenth ticks -#}
+    {%- for i in range(1, 10 * steps) -%}
+    {%- if i % 10 != 0 %}
+    <line x1="{{i * step_width / 10}}cm" y1="0.0cm" x2="{{i * step_width / 10}}cm" y2="{{height / 8}}cm" style="stroke: black; stroke-width: 1;"/>
+    {%- endif -%}
+    {%- endfor %}
+</svg>
+
